@@ -1,6 +1,5 @@
 import os
 import requests
-from flask import Response
 from django.contrib.auth.models import User
 from rest_framework import permissions, viewsets
 
@@ -90,7 +89,7 @@ def external_call(request):
     try:
         response = requests.get(external_url)
         response.raise_for_status()
-        return Response(f"Response from external service: {response.text}",
+        return HttpResponse(f"Response from external service: {response.text}",
                         status=response.status_code,
                         content_type='text/plain')
     except requests.exceptions.RequestException as e:
@@ -99,4 +98,4 @@ def external_call(request):
 
 
 def create_error_response(message, status_code):
-    return Response(message, status=status_code, content_type='text/plain')
+    return HttpResponse(message, status=status_code, content_type='text/plain')

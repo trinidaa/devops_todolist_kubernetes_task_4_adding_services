@@ -13,7 +13,7 @@ spec:
     - containerPort: 8080
     env:
     - name: EXTERNAL_ENDPOINT
-      value: "http://httpbi-api.todoapp.svc.cluster.local"
+      value: "http://httpbin-api.todoapp.svc.cluster.local"
     livenessProbe:
       httpGet:
         path: api/health
